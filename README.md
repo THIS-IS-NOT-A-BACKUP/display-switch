@@ -63,6 +63,9 @@ on_usb_connect = "hdmi2"
 `LEN P27u-10 S/N 1144206897` monitor ID. If more than one section has a match, a first one will be used.
 `on_usb_connect` and `on_usb_disconnect`, if defined, take precedence over global defaults.
 
+_Tips for Windows_: monitors can be renamed in the Registry at
+`\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\DISPLAY\{MODEL_ID}\{CONNECTION_ID}`. Edit the `DeviceDesc` value and change the name after the last semicolon. This is especially helpful in case they are all just "Generic PnP Monitor".
+
 ### Running external commands
 `display-switch` supports running external commands upon connection or disconnection of USB devices. This configuration
 can be global (runs every time a configured USB device is connected or disconnected) or per-monitor (runs only when
@@ -109,6 +112,8 @@ $ opendiff a b
 In the command output, the highlighted lines show you which USB IDs are most relevant.
 
 #### Linux
+Requires additional packages, install via: `sudo apt install libxi-dev xorg-dev`
+
 To locate the ID of your USB device on Linux, first install `lsusb`, which your Linux
 distro should have a package for. (On Debian, Ubuntu and RedHat, the package name is `usbutils`.)
 Then, in a terminal, run the following:
